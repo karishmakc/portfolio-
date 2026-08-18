@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #FFF8F9;
+  --bg-surface: #FFFFFF;
+  --bg-muted: #FDF0F3;
+  --bg-subtle: #F9E2E7;
+  --text-main: #23181C;
+  --text-muted: #735E66;
+  --text-faint: #A69199;
+  --accent-gold: #C59B27;
+  --accent-gold-dark: #A37E1C;
+  --accent-gold-light: #FBF0D3;
+  --accent-pink: #E2889A;
+  --accent-pink-dark: #B85066;
+  --accent-pink-soft: #FDE8ED;
+  --border-subtle: rgba(226, 136, 154, 0.18);
+  --border-medium: rgba(197, 155, 39, 0.28);
+  --border-gold: #C59B27;
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-canvas);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Custom Typography Utilities */
+.font-serif-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.font-sans-body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.font-mono-tag {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+/* Projects Grid - Explicit CSS Grid implementation as required by assignment */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* Editorial subtle borders and layout utilities */
+.border-subtle {
+  border-color: var(--border-subtle);
+}
+
+.border-medium {
+  border-color: var(--border-medium);
+}
+
+/* Interactive Card & Link Animations */
+.editorial-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
+}
+
+.editorial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(197, 155, 39, 0.12), 0 8px 16px -4px rgba(226, 136, 154, 0.1);
+  border-color: rgba(197, 155, 39, 0.4);
+}
+
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #C59B27, #E2889A);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Animated grain / subtle noise overlay if desired */
+.subtle-paper-texture {
+  background-image: radial-gradient(rgba(226, 136, 154, 0.06) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.92);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 3s infinite ease-in-out;
+}
+
+/* Continuous Ultra-Smooth Gentle Float Animations for Editorial Arrow Indicators */
+@keyframes floatVerticalSmooth {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatVerticalUpSmooth {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatDiagonalSmooth {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2.5px, -2.5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animate-arrow-down {
+  animation: floatVerticalSmooth 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+.animate-arrow-up {
+  animation: floatVerticalUpSmooth 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+.animate-arrow-diagonal {
+  animation: floatDiagonalSmooth 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+/* Circular Editorial Arrow Component */
+.editorial-arrow-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(197, 155, 39, 0.45);
+  background-color: rgba(253, 232, 237, 0.6);
+  color: #C59B27;
+  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px -2px rgba(197, 155, 39, 0.12);
+  will-change: transform, box-shadow;
+}
+
+.editorial-arrow-circle:hover,
+.group:hover .editorial-arrow-circle,
+.group\/btn:hover .editorial-arrow-circle {
+  background-color: #C59B27;
+  border-color: #C59B27;
+  color: #23181C;
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(197, 155, 39, 0.32);
+}
+
+.editorial-arrow-circle svg {
+  transition: color 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .editorial-arrow-circle .smooth-arrow-svg,
+.group\/btn:hover .editorial-arrow-circle .smooth-arrow-svg {
+  transform: scale(1.05);
+}
+
+/* Custom scrollbar in golden rose */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: #E8C888;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C59B27;
+}
+

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bg-p4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8F9"/>
+      <stop offset="100%" stop-color="#F7EDF0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg-p4)"/>
+  <rect x="40" y="40" width="1120" height="720" fill="none" stroke="#C59B27" stroke-width="2" stroke-dasharray="10 6"/>
+  <rect x="52" y="52" width="1096" height="696" fill="none" stroke="#E2889A" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- Center Placeholder Icon & Text -->
+  <circle cx="600" cy="340" r="60" fill="#FFFFFF" stroke="#C59B27" stroke-width="1.5"/>
+  <path d="M580 340 L600 320 L620 340 M600 320 L600 365" stroke="#C59B27" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <text x="600" y="440" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#23181C" letter-spacing="2">FUTURE CERTIFICATE HOLDER</text>
+  <text x="600" y="480" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="14" fill="#735E66">certificate-4.jpg</text>
+  <text x="600" y="520" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="13" fill="#9C828C">Place your certificate image in the /public folder to display it here</text>
+</svg>
